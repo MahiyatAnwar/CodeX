@@ -1,0 +1,297 @@
+/* Apply gradient to entire page */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    min-height: 100vh;
+}
+
+.main-content {
+    background: transparent; /* Remove any existing background */
+}
+
+.container.py-5 {
+    background: transparent;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white; /* Changed to white for better contrast */
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9); /* Lighter white with transparency */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.learning-path {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.phase-card {
+    background: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-left: 5px solid #e74c3c; /* Accent color */
+    backdrop-filter: blur(10px); /* Glass morphism effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e8e8e8;
+}
+
+.phase-badge {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); /* Red gradient */
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-right: 1rem;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.phase-title {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.phase-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.topic-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.topic-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease;
+}
+
+.topic-item:hover::before {
+    left: 100%;
+}
+
+.topic-item:hover {
+    transform: translateX(10px);
+    border-color: #3498db;
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.topic-icon {
+    font-size: 2.2rem;
+    margin-right: 1.5rem;
+    width: 70px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.topic-item:hover .topic-icon {
+    transform: scale(1.2);
+}
+
+.topic-content {
+    flex: 1;
+}
+
+.topic-content h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.topic-content p {
+    color: #5a6c7d;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.topic-duration {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    font-style: italic;
+    background: rgba(52, 152, 219, 0.1);
+    padding: 0.2rem 0.8rem;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.topic-arrow {
+    font-size: 1.8rem;
+    color: #3498db;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.topic-item:hover .topic-arrow {
+    transform: translateX(8px);
+    color: #e74c3c;
+}
+
+.cta-card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    padding: 3rem;
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    position: relative; /* Needed for pseudo-element */
+}
+
+/* Inner gradient border */
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border-radius: 15px; /* Slightly smaller than main border-radius */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: -1;
+    padding: 3px; /* Border thickness */
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.cta-card:hover::before {
+    inset: 4px; /* Thicker border on hover */
+    padding: 4px;
+}
+
+.cta-card h4 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.cta-card p {
+    margin-bottom: 2rem;
+    color: #5a6c7d;
+    font-size: 1.1rem;
+}
+
+.cta-card .btn {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border: none;
+    padding: 15px 40px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cta-card .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+}
+
+/* Enhanced responsive design */
+@media (max-width: 768px) {
+    .phase-card {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .topic-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .topic-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .topic-arrow {
+        margin-top: 1rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .phase-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .phase-badge {
+        align-self: flex-start;
+    }
+    
+    .cta-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .topic-item:hover {
+        transform: translateY(-5px);
+    }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.phase-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.phase-card:nth-child(1) { animation-delay: 0.1s; }
+.phase-card:nth-child(2) { animation-delay: 0.2s; }
+.phase-card:nth-child(3) { animation-delay: 0.3s; }
+.cta-card { animation: fadeInUp 0.6s ease-out 0.4s both; }

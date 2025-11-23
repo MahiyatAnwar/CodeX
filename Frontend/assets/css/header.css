@@ -1,0 +1,94 @@
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #2c3e50;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #3498db;
+    transform: translateY(-1px);
+}
+
+/* Auth Button Styles */
+.navbar-nav .auth-btn {
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 0 0.25rem;
+}
+
+/* Sign In Button */
+.navbar-nav .btn-outline-primary {
+    background: transparent;
+    border: 2px solid #3498db;
+    color: #3498db;
+}
+
+.navbar-nav .btn-outline-primary:hover {
+    background: #3498db !important; /* Force the color */
+    border-color: #3498db !important;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* Sign Up Button */
+.navbar-nav .btn-primary {
+    background: #3498db;
+    border: 2px solid #3498db;
+    color: white;
+}
+
+.navbar-nav .btn-primary:hover {
+    background: #2980b9 !important; /* Darker blue on hover */
+    border-color: #2980b9 !important;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+/* ACTIVE STATE - When user is on that page */
+.navbar-nav .auth-btn.active {
+    background: #3498db !important;
+    border-color: #3498db !important;
+    color: white !important;
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(3, 4, 4, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 45px;
+    }
+    
+    .navbar-nav .auth-btn {
+        padding: 6px 16px;
+        font-size: 0.9rem;
+        margin: 2px 0;
+        text-align: center;
+        width: 100%;
+        max-width: 120px;
+    }
+    
+    .navbar-nav {
+        align-items: center !important;
+    }
+}

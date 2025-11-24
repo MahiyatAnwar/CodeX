@@ -10,186 +10,446 @@
     <link rel="stylesheet" href="../assets/css/learning-plan.css">
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header"></div>
+<!-- Header Component -->
+<div id="header"></div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container py-5">
-            <!-- Page Header -->
-            <div class="row mb-5">
-                <div class="col-12 text-center">
-                    <h1 class="page-title">Your Competitive Programming Journey</h1>
-                    <p class="page-subtitle">Follow this structured path to master CP step by step</p>
+<!-- Main Content -->
+<main class="main-content">
+    <div class="container py-5">
+        <!-- Page Header -->
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h1 class="page-title">Your Competitive Programming Journey</h1>
+                <p class="page-subtitle">Follow this structured path to master CP step by step</p>
+            </div>
+        </div>
+
+        <!-- Learning Path -->
+        <div class="learning-path">
+            <!-- Phase 1 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <span class="phase-badge">Phase 1</span>
+                    <h3 class="phase-title">Foundation & Basics</h3>
+                </div>
+                <div class="phase-topics">
+                    <div class="topic-item" onclick="redirectToTopic('hello-world')">
+                        <div class="topic-icon">👋</div>
+                        <div class="topic-content">
+                            <h5>Hello World</h5>
+                            <p>Get started with your first program</p>
+                            <span class="topic-duration">Estimated: 1 day</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('cpp-programming')">
+                        <div class="topic-icon">💻</div>
+                        <div class="topic-content">
+                            <h5>C++ Programming</h5>
+                            <p>Learn the fundamentals of C++ programming</p>
+                            <span class="topic-duration">Estimated: 1 week</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('builtin-functions')">
+                        <div class="topic-icon">🔧</div>
+                        <div class="topic-content">
+                            <h5>Built-in Functions of C & C++</h5>
+                            <p>Master essential library functions</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('data-types')">
+                        <div class="topic-icon">📝</div>
+                        <div class="topic-content">
+                            <h5>Data Types, Variables and Operators</h5>
+                            <p>Understand fundamental programming concepts</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('cyclic-pattern')">
+                        <div class="topic-icon">🔄</div>
+                        <div class="topic-content">
+                            <h5>Cyclic Pattern</h5>
+                            <p>Learn pattern recognition and cyclic algorithms</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('number-system')">
+                        <div class="topic-icon">🔢</div>
+                        <div class="topic-content">
+                            <h5>Decimal and Binary Number System</h5>
+                            <p>Master number systems and their properties</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('operators')">
+                        <div class="topic-icon">⚡</div>
+                        <div class="topic-content">
+                            <h5>All Types of Operators</h5>
+                            <p>Comprehensive guide to C++ operators</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('bitwise')">
+                        <div class="topic-icon">🔍</div>
+                        <div class="topic-content">
+                            <h5>Bitwise Operator</h5>
+                            <p>Learn low-level bit manipulation</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('conditional')">
+                        <div class="topic-icon">❓</div>
+                        <div class="topic-content">
+                            <h5>Conditional Statements</h5>
+                            <p>If, Else, Else If statements and logic</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('loop')">
+                        <div class="topic-icon">🔄</div>
+                        <div class="topic-content">
+                            <h5>Loop</h5>
+                            <p>Master loops and iteration techniques</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('array')">
+                        <div class="topic-icon">📊</div>
+                        <div class="topic-content">
+                            <h5>Array</h5>
+                            <p>Learn array data structure and operations</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('string')">
+                        <div class="topic-icon">📝</div>
+                        <div class="topic-content">
+                            <h5>String</h5>
+                            <p>String manipulation and operations</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('brute-force')">
+                        <div class="topic-icon">💪</div>
+                        <div class="topic-content">
+                            <h5>Brute Force and Constructive Algorithm</h5>
+                            <p>Basic problem-solving approaches</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('greedy')">
+                        <div class="topic-icon">🎯</div>
+                        <div class="topic-content">
+                            <h5>Greedy Algorithm</h5>
+                            <p>Learn greedy problem-solving techniques</p>
+                            <span class="topic-duration">Estimated: 4 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('time-complexity')">
+                        <div class="topic-icon">⏰</div>
+                        <div class="topic-content">
+                            <h5>Time Complexity</h5>
+                            <p>Understand algorithm efficiency</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('function')">
+                        <div class="topic-icon">📞</div>
+                        <div class="topic-content">
+                            <h5>Function</h5>
+                            <p>Modular programming with functions</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('recursion')">
+                        <div class="topic-icon">🌀</div>
+                        <div class="topic-content">
+                            <h5>Recursion</h5>
+                            <p>Master recursive problem-solving</p>
+                            <span class="topic-duration">Estimated: 4 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Learning Path -->
-            <div class="learning-path">
-                <!-- Phase 1 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-badge">Phase 1</span>
-                        <h3 class="phase-title">Foundation & Basics</h3>
-                    </div>
-                    <div class="phase-topics">
-                        <div class="topic-item" onclick="redirectToTopic('arrays')">
-                            <div class="topic-icon">🔢</div>
-                            <div class="topic-content">
-                                <h5>Arrays & Strings</h5>
-                                <p>Master basic data structures and manipulation</p>
-                                <span class="topic-duration">Estimated: 1 week</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
-                        </div>
-
-                        <div class="topic-item" onclick="redirectToTopic('sorting')">
-                            <div class="topic-icon">📊</div>
-                            <div class="topic-content">
-                                <h5>Sorting Algorithms</h5>
-                                <p>Learn essential sorting techniques and their complexities</p>
-                                <span class="topic-duration">Estimated: 1 week</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
-                        </div>
-
-                        <div class="topic-item" onclick="redirectToTopic('searching')">
-                            <div class="topic-icon">🔍</div>
-                            <div class="topic-content">
-                                <h5>Searching Algorithms</h5>
-                                <p>Binary search and other efficient searching methods</p>
-                                <span class="topic-duration">Estimated: 1 week</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
-                        </div>
-                    </div>
+            <!-- Phase 2 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <span class="phase-badge">Phase 2</span>
+                    <h3 class="phase-title">STL (Standard Template Library)</h3>
                 </div>
-
-                <!-- Phase 2 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-badge">Phase 2</span>
-                        <h3 class="phase-title">Data Structures</h3>
+                <div class="phase-topics">
+                    <div class="topic-item" onclick="redirectToTopic('vector')">
+                        <div class="topic-icon">📦</div>
+                        <div class="topic-content">
+                            <h5>Vector</h5>
+                            <p>Dynamic arrays and their operations</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
                     </div>
-                    <div class="phase-topics">
-                        <div class="topic-item" onclick="redirectToTopic('linkedlist')">
-                            <div class="topic-icon">⛓️</div>
-                            <div class="topic-content">
-                                <h5>Linked Lists</h5>
-                                <p>Understand pointers and dynamic data structures</p>
-                                <span class="topic-duration">Estimated: 1 week</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
-                        </div>
 
-                        <div class="topic-item" onclick="redirectToTopic('stacks')">
-                            <div class="topic-icon">📚</div>
-                            <div class="topic-content">
-                                <h5>Stacks & Queues</h5>
-                                <p>LIFO and FIFO data structures with applications</p>
-                                <span class="topic-duration">Estimated: 1 week</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
+                    <div class="topic-item" onclick="redirectToTopic('string-stl')">
+                        <div class="topic-icon">🔤</div>
+                        <div class="topic-content">
+                            <h5>String (STL)</h5>
+                            <p>Advanced string operations with STL</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
                         </div>
-
-                        <div class="topic-item" onclick="redirectToTopic('trees')">
-                            <div class="topic-icon">🌳</div>
-                            <div class="topic-content">
-                                <h5>Trees & BST</h5>
-                                <p>Hierarchical data structures and tree traversals</p>
-                                <span class="topic-duration">Estimated: 2 weeks</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
-                        </div>
+                        <div class="topic-arrow">→</div>
                     </div>
-                </div>
 
-                <!-- Phase 3 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-badge">Phase 3</span>
-                        <h3 class="phase-title">Advanced Concepts</h3>
+                    <div class="topic-item" onclick="redirectToTopic('map')">
+                        <div class="topic-icon">🗺️</div>
+                        <div class="topic-content">
+                            <h5>Map</h5>
+                            <p>Key-value pairs and dictionary operations</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
                     </div>
-                    <div class="phase-topics">
-                        <div class="topic-item" onclick="redirectToTopic('graphs')">
-                            <div class="topic-icon">🕸️</div>
-                            <div class="topic-content">
-                                <h5>Graph Algorithms</h5>
-                                <p>BFS, DFS, shortest path, and graph theory</p>
-                                <span class="topic-duration">Estimated: 2 weeks</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
-                        </div>
 
-                        <div class="topic-item" onclick="redirectToTopic('dp')">
-                            <div class="topic-icon">⚡</div>
-                            <div class="topic-content">
-                                <h5>Dynamic Programming</h5>
-                                <p>Master optimization techniques and state transitions</p>
-                                <span class="topic-duration">Estimated: 2 weeks</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
+                    <div class="topic-item" onclick="redirectToTopic('set')">
+                        <div class="topic-icon">🔄</div>
+                        <div class="topic-content">
+                            <h5>Set & Multiset</h5>
+                            <p>Unique elements and sorted collections</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
                         </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
 
-                        <div class="topic-item" onclick="redirectToTopic('greedy')">
-                            <div class="topic-icon">🎯</div>
-                            <div class="topic-content">
-                                <h5>Greedy Algorithms</h5>
-                                <p>Learn when to make locally optimal choices</p>
-                                <span class="topic-duration">Estimated: 1 week</span>
-                            </div>
-                            <div class="topic-arrow">→</div>
+                    <div class="topic-item" onclick="redirectToTopic('pair')">
+                        <div class="topic-icon">👥</div>
+                        <div class="topic-content">
+                            <h5>Pair</h5>
+                            <p>Two-element tuples and their applications</p>
+                            <span class="topic-duration">Estimated: 1 day</span>
                         </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('stack-queue')">
+                        <div class="topic-icon">📚</div>
+                        <div class="topic-content">
+                            <h5>Stack & Queue</h5>
+                            <p>LIFO and FIFO data structures</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('deque-priority')">
+                        <div class="topic-icon">🎯</div>
+                        <div class="topic-content">
+                            <h5>Deque & Priority Queue</h5>
+                            <p>Double-ended queues and heap-based queues</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
                     </div>
                 </div>
             </div>
 
-            <!-- CTA Section -->
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <div class="cta-card">
-                        <h4>Ready to Start Your Journey?</h4>
-                        <p>Begin with Phase 1 and build your competitive programming skills step by step</p>
-                        <button class="btn btn-primary btn-lg" onclick="startLearning()">
-                            Begin Learning Now
-                        </button>
+            <!-- Phase 3 -->
+            <div class="phase-card">
+                <div class="phase-header">
+                    <span class="phase-badge">Phase 3</span>
+                    <h3 class="phase-title">Data Structures & Algorithms</h3>
+                </div>
+                <div class="phase-topics">
+                    <div class="topic-item" onclick="redirectToTopic('basic-ds')">
+                        <div class="topic-icon">🏗️</div>
+                        <div class="topic-content">
+                            <h5>Basic Data Structure</h5>
+                            <p>Fundamental data structure concepts</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('heap')">
+                        <div class="topic-icon">📚</div>
+                        <div class="topic-content">
+                            <h5>Heap</h5>
+                            <p>Priority-based tree data structure</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('hash-tables')">
+                        <div class="topic-icon">🔍</div>
+                        <div class="topic-content">
+                            <h5>Hash Tables</h5>
+                            <p>Fast lookup data structures</p>
+                            <span class="topic-duration">Estimated: 3 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('searching')">
+                        <div class="topic-icon">🔎</div>
+                        <div class="topic-content">
+                            <h5>Searching Algorithms</h5>
+                            <p>Efficient data searching techniques</p>
+                            <span class="topic-duration">Estimated: 4 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('sorting')">
+                        <div class="topic-icon">📊</div>
+                        <div class="topic-content">
+                            <h5>Sorting Algorithms</h5>
+                            <p>Various sorting techniques and complexities</p>
+                            <span class="topic-duration">Estimated: 4 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('tree')">
+                        <div class="topic-icon">🌳</div>
+                        <div class="topic-content">
+                            <h5>Tree</h5>
+                            <p>Hierarchical data structures</p>
+                            <span class="topic-duration">Estimated: 5 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('graph-representation')">
+                        <div class="topic-icon">🕸️</div>
+                        <div class="topic-content">
+                            <h5>Graph Representation</h5>
+                            <p>Different ways to represent graphs</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('graph-algorithms')">
+                        <div class="topic-icon">🚀</div>
+                        <div class="topic-content">
+                            <h5>Graph Algorithms</h5>
+                            <p>BFS, DFS, and other graph traversals</p>
+                            <span class="topic-duration">Estimated: 5 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('dp')">
+                        <div class="topic-icon">⚡</div>
+                        <div class="topic-content">
+                            <h5>Dynamic Programming</h5>
+                            <p>Optimization through memoization</p>
+                            <span class="topic-duration">Estimated: 1 week</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('bellman-ford')">
+                        <div class="topic-icon">🛣️</div>
+                        <div class="topic-content">
+                            <h5>Bellman-Ford Algorithm</h5>
+                            <p>Shortest path with negative weights</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
+                    </div>
+
+                    <div class="topic-item" onclick="redirectToTopic('lcs')">
+                        <div class="topic-icon">📏</div>
+                        <div class="topic-content">
+                            <h5>LCS (Longest Common Subsequence)</h5>
+                            <p>Dynamic programming for sequence alignment</p>
+                            <span class="topic-duration">Estimated: 2 days</span>
+                        </div>
+                        <div class="topic-arrow">→</div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- Footer Component -->
-    <div id="footer"></div>
+        <!-- CTA Section -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="cta-card">
+                    <h4>Ready to Start Your Journey?</h4>
+                    <p>Begin with Phase 1 and build your competitive programming skills step by step</p>
+                    <button class="btn btn-primary btn-lg" onclick="startLearning()">
+                        Begin Learning Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/navigation.js"></script>
-    <script>
-        // Load header and footer components
-        fetch('../components/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-        
-        fetch('../components/footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
+<!-- Footer Component -->
+<div id="footer"></div>
 
-        // Redirect to topic page (will check authentication)
-        function redirectToTopic(topicName) {
-            // For now, redirect to login if not authenticated
-            // Later, this will go to actual topic page
-            const isLoggedIn = false; // Temporary
-            if (!isLoggedIn) {
-                alert('Please sign in to access learning materials');
-                window.location.href = 'login.html';
-            } else {
-                window.location.href = `topics.html?topic=${topicName}`;
-            }
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/navigation.js"></script>
+<script>
+    // Load header and footer components
+    fetch('../components/header.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('header').innerHTML = data);
+
+    fetch('../components/footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
+
+    // Redirect to topic page (will check authentication)
+    function redirectToTopic(topicName) {
+        // For now, redirect to login if not authenticated
+        // Later, this will go to actual topic page
+        const isLoggedIn = false; // Temporary
+        if (!isLoggedIn) {
+            alert('Please sign in to access learning materials');
+            window.location.href = 'login.html';
+        } else {
+            window.location.href = `topics.html?topic=${topicName}`;
         }
+    }
 
-        function startLearning() {
-            redirectToTopic('arrays');
-        }
-    </script>
+    function startLearning() {
+        redirectToTopic('hello-world');
+    }
+</script>
 </body>
 </html>

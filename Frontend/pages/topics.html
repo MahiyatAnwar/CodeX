@@ -9,400 +9,805 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/topics.css">
+    <style>
+        .learning-option {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .learning-option:hover {
+            border-color: #007bff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+        }
+
+        .learning-option.active {
+            border-color: #007bff;
+            background-color: #f8f9fa;
+        }
+
+        .option-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .option-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .option-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+        }
+
+        .option-arrow {
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .learning-option.active .option-arrow {
+            transform: rotate(180deg);
+        }
+
+        .option-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+
+        .learning-option.active .option-content {
+            max-height: 1000px;
+            margin-top: 1.5rem;
+        }
+
+        .back-button {
+            margin-top: 2rem;
+        }
+
+        .problem-solving-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .content-placeholder {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .content-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .code-examples {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #444;
+        }
+
+        .code-language {
+            font-weight: bold;
+            color: #569cd6;
+        }
+
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+
+        .code-block {
+            margin: 0;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        .code-type {
+            color: #4ec9b0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header"></div>
+<!-- Header Component -->
+<div id="header"></div>
 
-    <!-- Main Content -->
-    <main class="main-content topics-page">
-        <div class="container py-5">
-            <!-- Topic Header -->
-            <div class="topic-header text-center mb-5">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="learning-plan.html">Learning Plan</a></li>
-                        <li class="breadcrumb-item"><a href="learning-plan.html">Phase 1</a></li>
-                        <li class="breadcrumb-item active" aria-current="page" id="current-topic">Arrays & Strings</li>
-                    </ol>
-                </nav>
-                
-                <h1 class="topic-title" id="topic-title">Arrays & Strings</h1>
-                <div class="topic-meta">
-                    <span class="topic-difficulty badge bg-warning">Beginner</span>
-                    <span class="topic-duration"><i class="fas fa-clock"></i> Estimated: 1 week</span>
+<!-- Main Content -->
+<main class="main-content topics-page">
+    <div class="container py-5">
+        <!-- Topic Header -->
+        <div class="topic-header text-center mb-5">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center">
+                    <li class="breadcrumb-item"><a href="learning-plan.html">Learning Plan</a></li>
+                    <li class="breadcrumb-item"><a href="learning-plan.html" id="current-phase">Phase 1</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="current-topic">Hello World</li>
+                </ol>
+            </nav>
+
+            <h1 class="topic-title" id="topic-title">Hello World</h1>
+            <div class="topic-meta">
+                <span class="topic-difficulty badge bg-warning" id="topic-difficulty">Beginner</span>
+                <span class="topic-duration"><i class="fas fa-clock"></i> Estimated: <span id="topic-duration">1 day</span></span>
+            </div>
+            <p class="topic-description lead mt-3" id="topic-description">
+                Get started with your first program and understand the basics of competitive programming.
+            </p>
+        </div>
+
+        <!-- Learning Options -->
+        <div class="learning-options">
+            <!-- Basic Level -->
+            <div class="learning-option" onclick="toggleOption(this)">
+                <div class="option-header">
+                    <div class="option-icon">📚</div>
+                    <h3 class="option-title">Basic Level</h3>
+                    <div class="option-arrow">▼</div>
                 </div>
-                <p class="topic-description lead mt-3">
-                    Master the fundamental data structures of arrays and strings, essential for solving basic to advanced programming problems.
-                </p>
+                <div class="option-content">
+                    <div class="content-placeholder">
+                        <i class="fas fa-book"></i>
+                        <h4>Basic Level Content</h4>
+                        <p>Detailed basic level content will be loaded from backend when this option is clicked.</p>
+                        <p>This will include fundamental concepts, simple examples, and beginner-friendly explanations.</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Progress Tracker -->
-            <div class="progress-section mb-5">
-                <div class="progress-card">
-                    <div class="progress-header">
-                        <h4>Your Progress</h4>
-                        <span class="progress-percentage">25%</span>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="progress-stats">
-                        <span><i class="fas fa-check-circle text-success"></i> 1/4 sections completed</span>
+            <!-- Intermediate Level -->
+            <div class="learning-option" onclick="toggleOption(this)">
+                <div class="option-header">
+                    <div class="option-icon">🎯</div>
+                    <h3 class="option-title">Intermediate Level</h3>
+                    <div class="option-arrow">▼</div>
+                </div>
+                <div class="option-content">
+                    <div class="content-placeholder">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Intermediate Level Content</h4>
+                        <p>Detailed intermediate level content will be loaded from backend when this option is clicked.</p>
+                        <p>This will include more complex concepts, practical examples, and real-world applications.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Learning Sections -->
-            <div class="learning-sections">
-                <!-- Tips & Tricks Section -->
-                <section class="learning-section" id="tips-section">
-                    <div class="section-header">
-                        <div class="section-icon">💡</div>
-                        <h2>Tips & Tricks</h2>
-                        <button class="btn btn-sm btn-outline-success mark-complete" data-section="tips">
-                            <i class="fas fa-check"></i> Mark Complete
-                        </button>
+            <!-- Advanced Level -->
+            <div class="learning-option" onclick="toggleOption(this)">
+                <div class="option-header">
+                    <div class="option-icon">🚀</div>
+                    <h3 class="option-title">Advanced Level</h3>
+                    <div class="option-arrow">▼</div>
+                </div>
+                <div class="option-content">
+                    <div class="content-placeholder">
+                        <i class="fas fa-rocket"></i>
+                        <h4>Advanced Level Content</h4>
+                        <p>Detailed advanced level content will be loaded from backend when this option is clicked.</p>
+                        <p>This will include advanced techniques, optimization strategies, and complex problem-solving approaches.</p>
                     </div>
-                    <div class="section-content">
-                        <div class="tips-grid">
-                            <div class="tip-card">
-                                <h5>Two Pointer Technique</h5>
-                                <p>Use two pointers to traverse the array from both ends for problems like palindrome checking or pair searching.</p>
-                                <code>left = 0, right = len(arr) - 1</code>
-                            </div>
-                            <div class="tip-card">
-                                <h5>Sliding Window</h5>
-                                <p>Maintain a window that slides through the array for subarray/substring problems with fixed or dynamic size.</p>
-                                <code>window_start = 0, window_end = 0</code>
-                            </div>
-                            <div class="tip-card">
-                                <h5>Character Frequency</h5>
-                                <p>Use hash maps to count character frequencies for anagram and permutation problems.</p>
-                                <code>freq_map = defaultdict(int)</code>
-                            </div>
-                            <div class="tip-card">
-                                <h5>String Builder</h5>
-                                <p>Use StringBuilder (Java) or list joining (Python) for efficient string concatenation.</p>
-                                <code>result = []<br>result.append(char)<br>return ''.join(result)</code>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </div>
+            </div>
 
-                <!-- Pseudocode Section -->
-                <section class="learning-section" id="pseudocode-section">
-                    <div class="section-header">
-                        <div class="section-icon">📋</div>
-                        <h2>Pseudocode Examples</h2>
-                        <button class="btn btn-sm btn-outline-success mark-complete" data-section="pseudocode">
-                            <i class="fas fa-check"></i> Mark Complete
-                        </button>
+            <!-- Code Implementation -->
+            <div class="learning-option" onclick="toggleOption(this)">
+                <div class="option-header">
+                    <div class="option-icon">💻</div>
+                    <h3 class="option-title">Code Implementation</h3>
+                    <div class="option-arrow">▼</div>
+                </div>
+                <div class="option-content">
+                    <div class="content-placeholder">
+                        <i class="fas fa-code"></i>
+                        <h4>Code Implementation</h4>
+                        <p>Code examples and implementations will be loaded from backend when this option is clicked.</p>
+                        <p>This will include multiple language examples (C++, Python, Java), pseudocode, and implementation strategies.</p>
                     </div>
-                    <div class="section-content">
-                        <div class="pseudocode-examples">
-                            <div class="pseudocode-card">
-                                <h5>Reverse a String</h5>
-                                <pre><code>FUNCTION reverseString(str):
-    left = 0
-    right = length(str) - 1
-    chars = convert string to character array
-    
-    WHILE left < right:
-        SWAP chars[left] and chars[right]
-        left = left + 1
-        right = right - 1
-    
-    RETURN convert chars to string
-END FUNCTION</code></pre>
-                            </div>
-                            <div class="pseudocode-card">
-                                <h5>Find Maximum Subarray Sum (Kadane's Algorithm)</h5>
-                                <pre><code>FUNCTION maxSubarraySum(arr):
-    max_so_far = arr[0]
-    current_max = arr[0]
-    
-    FOR i FROM 1 TO length(arr) - 1:
-        current_max = MAX(arr[i], current_max + arr[i])
-        max_so_far = MAX(max_so_far, current_max)
-    
-    RETURN max_so_far
-END FUNCTION</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </div>
+            </div>
 
-                <!-- Code Implementation Section -->
-                <section class="learning-section" id="code-section">
-                    <div class="section-header">
-                        <div class="section-icon">💻</div>
-                        <h2>Code Implementation</h2>
-                        <button class="btn btn-sm btn-outline-success mark-complete" data-section="code">
-                            <i class="fas fa-check"></i> Mark Complete
-                        </button>
-                    </div>
-                    <div class="section-content">
-                        <div class="code-tabs">
-                            <ul class="nav nav-tabs" id="codeTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="python-tab" data-bs-toggle="tab" data-bs-target="#python" type="button" role="tab">Python</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="java-tab" data-bs-toggle="tab" data-bs-target="#java" type="button" role="tab">Java</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="cpp-tab" data-bs-toggle="tab" data-bs-target="#cpp" type="button" role="tab">C++</button>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="codeTabContent">
-                                <div class="tab-pane fade show active" id="python" role="tabpanel">
-                                    <pre><code class="language-python">def reverse_string(s):
-    left, right = 0, len(s) - 1
-    chars = list(s)
-    
-    while left < right:
-        chars[left], chars[right] = chars[right], chars[left]
-        left += 1
-        right -= 1
-    
-    return ''.join(chars)
+            <!-- Raw Code Examples -->
+            <div class="learning-option" onclick="toggleOption(this)">
+                <div class="option-header">
+                    <div class="option-icon">📝</div>
+                    <h3 class="option-title">Raw Code Examples</h3>
+                    <div class="option-arrow">▼</div>
+                </div>
+                <div class="option-content">
+                    <div class="content-placeholder">
+                        <i class="fas fa-file-code"></i>
+                        <h4>Raw Code Examples</h4>
+                        <p>Raw, executable code examples in multiple programming languages.</p>
 
-def max_subarray_sum(arr):
-    max_so_far = arr[0]
-    current_max = arr[0]
-    
-    for i in range(1, len(arr)):
-        current_max = max(arr[i], current_max + arr[i])
-        max_so_far = max(max_so_far, current_max)
-    
-    return max_so_far</code></pre>
-                                </div>
-                                <div class="tab-pane fade" id="java" role="tabpanel">
-                                    <pre><code class="language-java">public class ArraySolutions {
-    public static String reverseString(String str) {
-        char[] chars = str.toCharArray();
-        int left = 0, right = chars.length - 1;
-        
-        while (left < right) {
-            char temp = chars[left];
-            chars[left] = chars[right];
-            chars[right] = temp;
-            left++;
-            right--;
-        }
-        
-        return new String(chars);
-    }
-    
-    public static int maxSubarraySum(int[] arr) {
-        int maxSoFar = arr[0];
-        int currentMax = arr[0];
-        
-        for (int i = 1; i < arr.length; i++) {
-            currentMax = Math.max(arr[i], currentMax + arr[i]);
-            maxSoFar = Math.max(maxSoFar, currentMax);
-        }
-        
-        return maxSoFar;
-    }
-}</code></pre>
-                                </div>
-                                <div class="tab-pane fade" id="cpp" role="tabpanel">
-                                    <pre><code class="language-cpp">#include <algorithm>
-#include <string>
+                        <!-- C++ Example -->
+                        <div class="code-examples">
+                            <div class="code-header">
+                                <span class="code-language">C++</span>
+                                <button class="copy-btn" onclick="copyCode(this, 'cpp-code')">Copy Code</button>
+                            </div>
+                            <pre class="code-block" id="cpp-code"><code>#include <iostream>
 using namespace std;
 
-string reverseString(string str) {
-    int left = 0, right = str.length() - 1;
-    
-    while (left < right) {
-        swap(str[left], str[right]);
-        left++;
-        right--;
+<span class="code-comment">// Hello World in C++</span>
+int main() {
+    cout << <span class="code-string">"Hello, World!"</span> << endl;
+    cout << <span class="code-string">"Welcome to Competitive Programming!"</span> << endl;
+
+    <span class="code-comment">// Basic variable example</span>
+    int number = 42;
+    cout << <span class="code-string">"The answer is: "</span> << number << endl;
+
+    return 0;
+}</code></pre>
+                        </div>
+
+                        <!-- Python Example -->
+                        <div class="code-examples">
+                            <div class="code-header">
+                                <span class="code-language">Python</span>
+                                <button class="copy-btn" onclick="copyCode(this, 'python-code')">Copy Code</button>
+                            </div>
+                            <pre class="code-block" id="python-code"><code><span class="code-comment"># Hello World in Python</span>
+print(<span class="code-string">"Hello, World!"</span>)
+print(<span class="code-string">"Welcome to Competitive Programming!"</span>)
+
+<span class="code-comment"># Basic variable example</span>
+number = 42
+print(<span class="code-string">f"The answer is: {number}"</span>)
+
+<span class="code-comment"># Function example</span>
+def greet(name):
+    <span class="code-keyword">return</span> <span class="code-string">f"Hello, {name}!"</span>
+
+print(greet(<span class="code-string">"Programmer"</span>))</code></pre>
+                        </div>
+
+                        <!-- Java Example -->
+                        <div class="code-examples">
+                            <div class="code-header">
+                                <span class="code-language">Java</span>
+                                <button class="copy-btn" onclick="copyCode(this, 'java-code')">Copy Code</button>
+                            </div>
+                            <pre class="code-block" id="java-code"><code><span class="code-keyword">public class</span> <span class="code-type">HelloWorld</span> {
+    <span class="code-comment">// Hello World in Java</span>
+    <span class="code-keyword">public static</span> <span class="code-type">void</span> <span class="code-function">main</span>(<span class="code-type">String</span>[] args) {
+        <span class="code-type">System</span>.out.println(<span class="code-string">"Hello, World!"</span>);
+        <span class="code-type">System</span>.out.println(<span class="code-string">"Welcome to Competitive Programming!"</span>);
+
+        <span class="code-comment">// Basic variable example</span>
+        <span class="code-keyword">int</span> number = 42;
+        <span class="code-type">System</span>.out.println(<span class="code-string">"The answer is: "</span> + number);
+
+        <span class="code-comment">// Method call</span>
+        greet(<span class="code-string">"Programmer"</span>);
     }
-    
-    return str;
+
+    <span class="code-keyword">public static</span> <span class="code-type">void</span> <span class="code-function">greet</span>(<span class="code-type">String</span> name) {
+        <span class="code-type">System</span>.out.println(<span class="code-string">"Hello, "</span> + name + <span class="code-string">"!"</span>);
+    }
+}</code></pre>
+                        </div>
+
+                        <!-- JavaScript Example -->
+                        <div class="code-examples">
+                            <div class="code-header">
+                                <span class="code-language">JavaScript</span>
+                                <button class="copy-btn" onclick="copyCode(this, 'js-code')">Copy Code</button>
+                            </div>
+                            <pre class="code-block" id="js-code"><code><span class="code-comment">// Hello World in JavaScript</span>
+console.log(<span class="code-string">"Hello, World!"</span>);
+console.log(<span class="code-string">"Welcome to Competitive Programming!"</span>);
+
+<span class="code-comment">// Basic variable example</span>
+<span class="code-keyword">const</span> number = 42;
+console.log(<span class="code-string">`The answer is: ${number}`</span>);
+
+<span class="code-comment">// Function example</span>
+<span class="code-keyword">function</span> <span class="code-function">greet</span>(name) {
+    <span class="code-keyword">return</span> <span class="code-string">`Hello, <span class="code-string">${</span>name<span class="code-string">}</span>!`</span>;
 }
 
-int maxSubarraySum(vector<int>& arr) {
-    int max_so_far = arr[0];
-    int current_max = arr[0];
-    
-    for (int i = 1; i < arr.size(); i++) {
-        current_max = max(arr[i], current_max + arr[i]);
-        max_so_far = max(max_so_far, current_max);
-    }
-    
-    return max_so_far;
-}</code></pre>
-                                </div>
-                            </div>
+console.log(greet(<span class="code-string">"Programmer"</span>));</code></pre>
                         </div>
                     </div>
-                </section>
-
-                <!-- Practice Problems Section -->
-                <section class="learning-section" id="problems-section">
-                    <div class="section-header">
-                        <div class="section-icon">🎯</div>
-                        <h2>Practice Problems</h2>
-                        <button class="btn btn-sm btn-outline-success mark-complete" data-section="problems">
-                            <i class="fas fa-check"></i> Mark Complete
-                        </button>
-                    </div>
-                    <div class="section-content">
-                        <div class="problems-list">
-                            <div class="problem-card">
-                                <div class="problem-info">
-                                    <h5>Two Sum</h5>
-                                    <p class="problem-desc">Find two numbers in an array that add up to a specific target.</p>
-                                    <div class="problem-meta">
-                                        <span class="difficulty easy">Easy</span>
-                                        <span class="companies">Amazon, Google, Facebook</span>
-                                    </div>
-                                </div>
-                                <div class="problem-actions">
-                                    <button class="btn btn-outline-primary btn-sm">Solve Problem</button>
-                                    <span class="solved-badge"><i class="fas fa-check-circle text-success"></i></span>
-                                </div>
-                            </div>
-                            
-                            <div class="problem-card">
-                                <div class="problem-info">
-                                    <h5>Valid Palindrome</h5>
-                                    <p class="problem-desc">Check if a string is a palindrome after converting to lowercase and removing non-alphanumeric characters.</p>
-                                    <div class="problem-meta">
-                                        <span class="difficulty easy">Easy</span>
-                                        <span class="companies">Microsoft, Uber, Apple</span>
-                                    </div>
-                                </div>
-                                <div class="problem-actions">
-                                    <button class="btn btn-outline-primary btn-sm">Solve Problem</button>
-                                    <span class="solved-badge"><i class="far fa-circle text-muted"></i></span>
-                                </div>
-                            </div>
-                            
-                            <div class="problem-card">
-                                <div class="problem-info">
-                                    <h5>Longest Substring Without Repeating Characters</h5>
-                                    <p class="problem-desc">Find the length of the longest substring without repeating characters.</p>
-                                    <div class="problem-meta">
-                                        <span class="difficulty medium">Medium</span>
-                                        <span class="companies">Amazon, Bloomberg, Adobe</span>
-                                    </div>
-                                </div>
-                                <div class="problem-actions">
-                                    <button class="btn btn-outline-primary btn-sm">Solve Problem</button>
-                                    <span class="solved-badge"><i class="far fa-circle text-muted"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                </div>
             </div>
 
-            <!-- Navigation -->
-            <div class="topic-navigation mt-5">
-                <div class="row">
-                    <div class="col-6">
-                        <a href="#" class="btn btn-outline-primary" id="prev-topic">
-                            <i class="fas fa-arrow-left"></i> Previous Topic
-                        </a>
-                    </div>
-                    <div class="col-6 text-end">
-                        <a href="learning-plan.html" class="btn btn-outline-secondary me-2">
-                            <i class="fas fa-list"></i> Back to Plan
-                        </a>
-                        <a href="#" class="btn btn-primary" id="next-topic">
-                            Next Topic <i class="fas fa-arrow-right"></i>
-                        </a>
+            <!-- Tips & Tricks -->
+            <div class="learning-option" onclick="toggleOption(this)">
+                <div class="option-header">
+                    <div class="option-icon">💡</div>
+                    <h3 class="option-title">Tips & Tricks</h3>
+                    <div class="option-arrow">▼</div>
+                </div>
+                <div class="option-content">
+                    <div class="content-placeholder">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>Tips & Tricks</h4>
+                        <p>Useful tips and tricks will be loaded from backend when this option is clicked.</p>
+                        <p>This will include best practices, common pitfalls to avoid, and optimization techniques.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
 
-    <!-- Footer Component -->
-    <div id="footer"></div>
+        <!-- Back Button -->
+        <div class="text-center back-button">
+            <button class="btn btn-outline-secondary" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i> Back to Options
+            </button>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Load header and footer components
-        fetch('../components/header.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-        
-        fetch('../components/footer.html')
-            .then(response => response.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
+        <!-- Problem Solving Section -->
+        <div class="problem-solving-section">
+            <div class="text-center mb-4">
+                <h2>Ready to Practice?</h2>
+                <p class="lead">Test your knowledge with hands-on problem solving</p>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg" onclick="goToProblemSolving()">
+                    <i class="fas fa-puzzle-piece"></i> Start Problem Solving
+                </button>
+            </div>
+        </div>
 
-        // Mark section as complete
-        document.querySelectorAll('.mark-complete').forEach(button => {
-            button.addEventListener('click', function() {
-                const section = this.getAttribute('data-section');
-                this.innerHTML = '<i class="fas fa-check"></i> Completed';
-                this.classList.remove('btn-outline-success');
-                this.classList.add('btn-success');
-                this.disabled = true;
-                
-                // Update progress (this will be connected to backend later)
-                updateProgress();
-            });
-        });
+        <!-- Navigation -->
+        <div class="topic-navigation mt-5">
+            <div class="row">
+                <div class="col-6">
+                    <a href="#" class="btn btn-outline-primary" id="prev-topic">
+                        <i class="fas fa-arrow-left"></i> Previous Topic
+                    </a>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="learning-plan.html" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-list"></i> Back to Plan
+                    </a>
+                    <a href="#" class="btn btn-primary" id="next-topic">
+                        Next Topic <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
-        function updateProgress() {
-            // Simple progress update logic
-            const completedSections = document.querySelectorAll('.btn-success').length;
-            const totalSections = document.querySelectorAll('.mark-complete').length;
-            const progress = (completedSections / totalSections) * 100;
-            
-            document.querySelector('.progress-bar').style.width = progress + '%';
-            document.querySelector('.progress-bar').setAttribute('aria-valuenow', progress);
-            document.querySelector('.progress-percentage').textContent = Math.round(progress) + '%';
-            document.querySelector('.progress-stats span').innerHTML = 
-                `<i class="fas fa-check-circle text-success"></i> ${completedSections}/${totalSections} sections completed`;
+<!-- Footer Component -->
+<div id="footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Topic data structure matching learning-plan.html
+    const topicData = {
+        // Phase 1: Foundation & Basics
+        'hello-world': {
+            title: 'Hello World',
+            description: 'Get started with your first program and understand the basics of competitive programming.',
+            difficulty: 'Beginner',
+            duration: '1 day',
+            phase: 'Phase 1'
+        },
+        'cpp-programming': {
+            title: 'C++ Programming',
+            description: 'Learn the fundamentals of C++ programming language.',
+            difficulty: 'Beginner',
+            duration: '1 week',
+            phase: 'Phase 1'
+        },
+        'builtin-functions': {
+            title: 'Built-in Functions of C & C++',
+            description: 'Master essential library functions.',
+            difficulty: 'Beginner',
+            duration: '3 days',
+            phase: 'Phase 1'
+        },
+        'data-types': {
+            title: 'Data Types, Variables and Operators',
+            description: 'Understand fundamental programming concepts.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'cyclic-pattern': {
+            title: 'Cyclic Pattern',
+            description: 'Learn pattern recognition and cyclic algorithms.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'number-system': {
+            title: 'Decimal and Binary Number System',
+            description: 'Master number systems and their properties.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'operators': {
+            title: 'All Types of Operators',
+            description: 'Comprehensive guide to C++ operators.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'bitwise': {
+            title: 'Bitwise Operator',
+            description: 'Learn low-level bit manipulation.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'conditional': {
+            title: 'Conditional Statements',
+            description: 'If, Else, Else If statements and logic.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'loop': {
+            title: 'Loop',
+            description: 'Master loops and iteration techniques.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'array': {
+            title: 'Array',
+            description: 'Learn array data structure and operations.',
+            difficulty: 'Beginner',
+            duration: '3 days',
+            phase: 'Phase 1'
+        },
+        'string': {
+            title: 'String',
+            description: 'String manipulation and operations.',
+            difficulty: 'Beginner',
+            duration: '3 days',
+            phase: 'Phase 1'
+        },
+        'brute-force': {
+            title: 'Brute Force and Constructive Algorithm',
+            description: 'Basic problem-solving approaches.',
+            difficulty: 'Beginner',
+            duration: '3 days',
+            phase: 'Phase 1'
+        },
+        'greedy': {
+            title: 'Greedy Algorithm',
+            description: 'Learn greedy problem-solving techniques.',
+            difficulty: 'Intermediate',
+            duration: '4 days',
+            phase: 'Phase 1'
+        },
+        'time-complexity': {
+            title: 'Time Complexity',
+            description: 'Understand algorithm efficiency.',
+            difficulty: 'Intermediate',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'function': {
+            title: 'Function',
+            description: 'Modular programming with functions.',
+            difficulty: 'Beginner',
+            duration: '2 days',
+            phase: 'Phase 1'
+        },
+        'recursion': {
+            title: 'Recursion',
+            description: 'Master recursive problem-solving.',
+            difficulty: 'Intermediate',
+            duration: '4 days',
+            phase: 'Phase 1'
+        },
+        // Phase 2: STL
+        'vector': {
+            title: 'Vector',
+            description: 'Dynamic arrays and their operations.',
+            difficulty: 'Intermediate',
+            duration: '3 days',
+            phase: 'Phase 2'
+        },
+        'string-stl': {
+            title: 'String (STL)',
+            description: 'Advanced string operations with STL.',
+            difficulty: 'Intermediate',
+            duration: '2 days',
+            phase: 'Phase 2'
+        },
+        'map': {
+            title: 'Map',
+            description: 'Key-value pairs and dictionary operations.',
+            difficulty: 'Intermediate',
+            duration: '3 days',
+            phase: 'Phase 2'
+        },
+        'set': {
+            title: 'Set & Multiset',
+            description: 'Unique elements and sorted collections.',
+            difficulty: 'Intermediate',
+            duration: '3 days',
+            phase: 'Phase 2'
+        },
+        'pair': {
+            title: 'Pair',
+            description: 'Two-element tuples and their applications.',
+            difficulty: 'Beginner',
+            duration: '1 day',
+            phase: 'Phase 2'
+        },
+        'stack-queue': {
+            title: 'Stack & Queue',
+            description: 'LIFO and FIFO data structures.',
+            difficulty: 'Intermediate',
+            duration: '3 days',
+            phase: 'Phase 2'
+        },
+        'deque-priority': {
+            title: 'Deque & Priority Queue',
+            description: 'Double-ended queues and heap-based queues.',
+            difficulty: 'Intermediate',
+            duration: '3 days',
+            phase: 'Phase 2'
+        },
+        // Phase 3: Data Structures & Algorithms
+        'basic-ds': {
+            title: 'Basic Data Structure',
+            description: 'Fundamental data structure concepts.',
+            difficulty: 'Intermediate',
+            duration: '2 days',
+            phase: 'Phase 3'
+        },
+        'heap': {
+            title: 'Heap',
+            description: 'Priority-based tree data structure.',
+            difficulty: 'Advanced',
+            duration: '3 days',
+            phase: 'Phase 3'
+        },
+        'hash-tables': {
+            title: 'Hash Tables',
+            description: 'Fast lookup data structures.',
+            difficulty: 'Advanced',
+            duration: '3 days',
+            phase: 'Phase 3'
+        },
+        'searching': {
+            title: 'Searching Algorithms',
+            description: 'Efficient data searching techniques.',
+            difficulty: 'Intermediate',
+            duration: '4 days',
+            phase: 'Phase 3'
+        },
+        'sorting': {
+            title: 'Sorting Algorithms',
+            description: 'Various sorting techniques and complexities.',
+            difficulty: 'Intermediate',
+            duration: '4 days',
+            phase: 'Phase 3'
+        },
+        'tree': {
+            title: 'Tree',
+            description: 'Hierarchical data structures.',
+            difficulty: 'Advanced',
+            duration: '5 days',
+            phase: 'Phase 3'
+        },
+        'graph-representation': {
+            title: 'Graph Representation',
+            description: 'Different ways to represent graphs.',
+            difficulty: 'Advanced',
+            duration: '2 days',
+            phase: 'Phase 3'
+        },
+        'graph-algorithms': {
+            title: 'Graph Algorithms',
+            description: 'BFS, DFS, and other graph traversals.',
+            difficulty: 'Advanced',
+            duration: '5 days',
+            phase: 'Phase 3'
+        },
+        'dp': {
+            title: 'Dynamic Programming',
+            description: 'Optimization through memoization.',
+            difficulty: 'Advanced',
+            duration: '1 week',
+            phase: 'Phase 3'
+        },
+        'bellman-ford': {
+            title: 'Bellman-Ford Algorithm',
+            description: 'Shortest path with negative weights.',
+            difficulty: 'Advanced',
+            duration: '2 days',
+            phase: 'Phase 3'
+        },
+        'lcs': {
+            title: 'LCS (Longest Common Subsequence)',
+            description: 'Dynamic programming for sequence alignment.',
+            difficulty: 'Advanced',
+            duration: '2 days',
+            phase: 'Phase 3'
         }
+    };
 
-        // Topic navigation system
-    const topicsFlow = [
-        'arrays',
-        'sorting', 
-        'searching',
-        'linkedlist',
-        'stacks',
-        'trees',
-        'graphs',
-        'dp',
-        'greedy'
-    ];
-
-    // Get current topic from URL or default to first topic
+    // Get current topic from URL
     function getCurrentTopic() {
         const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get('topic') || 'arrays';
+        return urlParams.get('topic') || 'hello-world';
     }
 
-    // Update navigation buttons
-    function updateNavigation() {
+    // Update page content based on topic
+    function updateTopicContent() {
         const currentTopic = getCurrentTopic();
-        const currentIndex = topicsFlow.indexOf(currentTopic);
-        
+        const data = topicData[currentTopic] || topicData['hello-world'];
+
+        // Update basic info
+        document.getElementById('current-topic').textContent = data.title;
+        document.getElementById('topic-title').textContent = data.title;
+        document.getElementById('topic-description').textContent = data.description;
+        document.getElementById('topic-difficulty').textContent = data.difficulty;
+        document.getElementById('topic-duration').textContent = data.duration;
+        document.getElementById('current-phase').textContent = data.phase;
+
+        // Update difficulty badge color
+        const difficultyBadge = document.getElementById('topic-difficulty');
+        const badgeClass = data.difficulty === 'Beginner' ? 'bg-warning' :
+                          data.difficulty === 'Intermediate' ? 'bg-info' : 'bg-danger';
+        difficultyBadge.className = `badge ${badgeClass}`;
+    }
+
+    // Toggle learning option
+    function toggleOption(element) {
+        const isActive = element.classList.contains('active');
+
+        // Close all other options
+        document.querySelectorAll('.learning-option').forEach(option => {
+            option.classList.remove('active');
+        });
+
+        // Toggle current option
+        if (!isActive) {
+            element.classList.add('active');
+
+            // Simulate loading content from backend for other options
+            if (!element.querySelector('.code-examples')) {
+                const contentPlaceholder = element.querySelector('.content-placeholder');
+                contentPlaceholder.innerHTML = `
+                    <div class="text-center">
+                        <div class="spinner-border text-primary mb-3" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading content from backend...</p>
+                    </div>
+                `;
+
+                // Simulate API call delay
+                setTimeout(() => {
+                    contentPlaceholder.innerHTML = `
+                        <i class="fas fa-check-circle text-success"></i>
+                        <h4>${element.querySelector('.option-title').textContent} Content Loaded</h4>
+                        <p>This is the detailed content for ${element.querySelector('.option-title').textContent}.</p>
+                        <p>In the actual implementation, this content will be fetched from the backend API based on the current topic and selected option.</p>
+                        <div class="mt-3">
+                            <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); loadDetailedContent('${element.querySelector('.option-title').textContent}')">
+                                Load More Details
+                            </button>
+                        </div>
+                    `;
+                }, 1000);
+            }
+        }
+    }
+
+    // Copy code to clipboard
+    function copyCode(button, codeId) {
+        const codeElement = document.getElementById(codeId);
+        const codeText = codeElement.textContent;
+
+        navigator.clipboard.writeText(codeText).then(() => {
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.style.background = '#28a745';
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.background = '#007bff';
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy code: ', err);
+            alert('Failed to copy code to clipboard');
+        });
+    }
+
+    // Load detailed content (simulated)
+    function loadDetailedContent(optionType) {
+        alert(`Loading detailed ${optionType} content from backend...\n\nThis would make an API call to fetch:\n- Detailed explanations\n- Code examples\n- Practice exercises\n- Related resources`);
+    }
+
+    // Go back to options view
+    function goBack() {
+        document.querySelectorAll('.learning-option').forEach(option => {
+            option.classList.remove('active');
+        });
+    }
+
+    // Navigate to problem solving
+    function goToProblemSolving() {
+        const currentTopic = getCurrentTopic();
+        alert(`Redirecting to Problem Solving page for: ${topicData[currentTopic].title}\n\nThis would navigate to a separate problem-solving interface.`);
+        // window.location.href = `problem-solving.html?topic=${currentTopic}`;
+    }
+
+    // Update navigation
+    function updateNavigation() {
+        const topics = Object.keys(topicData);
+        const currentTopic = getCurrentTopic();
+        const currentIndex = topics.indexOf(currentTopic);
+
         const prevBtn = document.getElementById('prev-topic');
         const nextBtn = document.getElementById('next-topic');
-        
+
         // Previous topic
         if (currentIndex > 0) {
-            const prevTopic = topicsFlow[currentIndex - 1];
+            const prevTopic = topics[currentIndex - 1];
             prevBtn.href = `topics.html?topic=${prevTopic}`;
             prevBtn.style.display = 'inline-block';
         } else {
             prevBtn.style.display = 'none';
         }
-        
+
         // Next topic
-        if (currentIndex < topicsFlow.length - 1) {
-            const nextTopic = topicsFlow[currentIndex + 1];
+        if (currentIndex < topics.length - 1) {
+            const nextTopic = topics[currentIndex + 1];
             nextBtn.href = `topics.html?topic=${nextTopic}`;
             nextBtn.style.display = 'inline-block';
         } else {
@@ -413,71 +818,21 @@ int maxSubarraySum(vector<int>& arr) {
         }
     }
 
-    // Update page content based on topic
-    function updateTopicContent() {
-        const currentTopic = getCurrentTopic();
-        const topicData = {
-            'arrays': {
-                title: 'Arrays & Strings',
-                description: 'Master the fundamental data structures of arrays and strings, essential for solving basic to advanced programming problems.',
-                difficulty: 'Beginner'
-            },
-            'sorting': {
-                title: 'Sorting Algorithms',
-                description: 'Learn essential sorting techniques and their time/space complexities for efficient problem-solving.',
-                difficulty: 'Beginner'
-            },
-            'searching': {
-                title: 'Searching Algorithms',
-                description: 'Master binary search and other efficient searching methods for sorted and unsorted data.',
-                difficulty: 'Beginner'
-            },
-            'linkedlist': {
-                title: 'Linked Lists',
-                description: 'Understand pointers and dynamic data structures with linked list implementations.',
-                difficulty: 'Intermediate'
-            },
-            'stacks': {
-                title: 'Stacks & Queues',
-                description: 'Learn LIFO and FIFO data structures with their practical applications.',
-                difficulty: 'Intermediate'
-            },
-            'trees': {
-                title: 'Trees & BST',
-                description: 'Master hierarchical data structures and tree traversal algorithms.',
-                difficulty: 'Intermediate'
-            },
-            'graphs': {
-                title: 'Graph Algorithms',
-                description: 'Learn BFS, DFS, shortest path algorithms and graph theory concepts.',
-                difficulty: 'Advanced'
-            },
-            'dp': {
-                title: 'Dynamic Programming',
-                description: 'Master optimization techniques and state transitions for complex problems.',
-                difficulty: 'Advanced'
-            },
-            'greedy': {
-                title: 'Greedy Algorithms',
-                description: 'Learn when to make locally optimal choices for global optimization.',
-                difficulty: 'Advanced'
-            }
-        };
-        
-        const data = topicData[currentTopic] || topicData['arrays'];
-        
-        // Update page content
-        document.getElementById('current-topic').textContent = data.title;
-        document.getElementById('topic-title').textContent = data.title;
-        document.querySelector('.topic-description').textContent = data.description;
-        document.querySelector('.topic-difficulty').textContent = data.difficulty;
-        document.querySelector('.topic-difficulty').className = `badge bg-${data.difficulty === 'Beginner' ? 'warning' : data.difficulty === 'Intermediate' ? 'info' : 'danger'}`;
-    }
+    // Load header and footer components
+    fetch('../components/header.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('header').innerHTML = data);
 
-    // Initialize navigation
-    updateNavigation();
-    updateTopicContent();
-    </script>
-    
+    fetch('../components/footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footer').innerHTML = data);
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+        updateTopicContent();
+        updateNavigation();
+    });
+</script>
+
 </body>
 </html>
